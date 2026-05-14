@@ -1,0 +1,31 @@
+name: Devin Automation
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+  merge_group:
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+  checks: read
+
+concurrency:
+  group: devin-automation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  devin-pr-automation:
+    uses: sinoda1114/devin-review-automation/.github/workflows/devin-pr-automation.yml@main
+    with:
+      automation-repository: sinoda1114/devin-review-automation
+      automation-ref: main
+    secrets: inherit

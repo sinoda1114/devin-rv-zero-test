@@ -1,0 +1,37 @@
+# Project-local configuration for Devin Review PR Automation.
+# Adjust quality.commands for this repository before enabling auto-merge.
+
+quality:
+  allowEmpty: false
+  commands:
+    - name: Define project quality check
+      run: echo 'Edit .github/devin-automation.yml quality.commands' && exit 1
+
+risk:
+  maxChangedFiles: 10
+  maxDiffLines: 300
+  maxAutofixCount: 1
+  requireDevinReviewSignal: false
+  commentOnFailure: true
+  devinReviewBotLogins:
+    - devin-ai-integration[bot]
+    - devin-ai[bot]
+    - devin[bot]
+  highRiskPatterns:
+    - .github/workflows/**
+    - package.json
+    - package-lock.json
+    - pnpm-lock.yaml
+    - yarn.lock
+    - bun.lockb
+    - "**/migrations/**"
+    - "**/migration/**"
+    - "**/schema/**"
+    - "**/auth/**"
+    - "**/authorization/**"
+    - "**/payment/**"
+    - "**/billing/**"
+    - "**/terraform/**"
+    - "**/*.tf"
+    - "**/.env*"
+    - "**/secrets/**"

@@ -27,8 +27,8 @@ risk:
     - devin[bot]
   highRiskPatterns:
     - .github/workflows/**
-    # This zero-flow test introduces initial package metadata in the PR.
-    # Keep package files high-risk in real production projects after bootstrap.
+    - package.json
+    - package-lock.json
     - pnpm-lock.yaml
     - yarn.lock
     - bun.lockb

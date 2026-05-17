@@ -79,7 +79,14 @@ function parseTerm(parser) {
   while (peek(parser) && (peek(parser).type === "*" || peek(parser).type === "/")) {
     const op = consume(parser).type;
     const right = parseFactor(parser);
-    left = op === "*" ? left * right : left / right;
+    if (op === "*") {
+      left = left * right;
+    } else {
+      if (right === 0) {
+        throw new RangeError("division by zero");
+      }
+      left = left / right;
+    }
   }
   return left;
 }

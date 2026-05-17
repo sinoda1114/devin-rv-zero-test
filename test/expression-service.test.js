@@ -27,6 +27,12 @@ describe("expression-service", () => {
     assert.throws(() => evaluateExpression("1; console.log('x')"), SyntaxError);
   });
 
+  it("rejects division by zero", () => {
+    assert.throws(() => evaluateExpression("1 / 0"), RangeError);
+    assert.throws(() => evaluateExpression("0 / 0"), RangeError);
+    assert.throws(() => evaluateExpression("10 / (3 - 3)"), RangeError);
+  });
+
   it("supports parentheses and unary minus", () => {
     assert.equal(evaluateExpression("-(2 + 3) * 4"), -20);
     assert.equal(evaluateExpression("(1 + 2) * (3 + 4)"), 21);

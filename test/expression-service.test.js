@@ -17,4 +17,18 @@ describe("expression-service", () => {
   it("rejects empty expressions", () => {
     assert.throws(() => evaluateExpression(""), TypeError);
   });
+
+  it("rejects non-arithmetic input (no arbitrary code execution)", () => {
+    assert.throws(() => evaluateExpression("process.exit(1)"), SyntaxError);
+    assert.throws(
+      () => evaluateExpression("require('child_process').execSync('ls')"),
+      SyntaxError,
+    );
+    assert.throws(() => evaluateExpression("1; console.log('x')"), SyntaxError);
+  });
+
+  it("supports parentheses and unary minus", () => {
+    assert.equal(evaluateExpression("-(2 + 3) * 4"), -20);
+    assert.equal(evaluateExpression("(1 + 2) * (3 + 4)"), 21);
+  });
 });

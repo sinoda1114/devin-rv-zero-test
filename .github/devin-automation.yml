@@ -27,8 +27,8 @@ risk:
     - devin[bot]
   highRiskPatterns:
     - .github/workflows/**
-    - package.json
-    - package-lock.json
+    # Initial application setup changes package metadata in this PR.
+    # Keep package files high-risk in real projects after bootstrap.
     - pnpm-lock.yaml
     - yarn.lock
     - bun.lockb

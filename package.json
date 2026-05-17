@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "node --check src/expression-service.js && node --check test/expression-service.test.js",
-    "typecheck": "node --check src/expression-service.js && node --check test/expression-service.test.js",
+    "lint": "node --check src/expression-service.js && node --check test/expression-service.test.js && node --check src/string-utils.js && node --check test/string-utils.test.js",
+    "typecheck": "node --check src/expression-service.js && node --check test/expression-service.test.js && node --check src/string-utils.js && node --check test/string-utils.test.js",
     "test": "node --test",
     "build": "node scripts/build.js"
   }

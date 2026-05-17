@@ -1,6 +1,6 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 
 mkdirSync("dist", { recursive: true });
-writeFileSync("dist/README.txt", "Vulnerable expression service build artifact.\n");
+writeFileSync("dist/README.txt", "Initial app build artifact.\n");
 
 console.log("build ok");
